@@ -1,0 +1,20 @@
+﻿extends layout
+
+block content
+	h1= title
+	p Welcome to #{title}
+
+	form(action='/save', method='post')
+		label(for='name') İsim: 
+			input(id='name', name='name', type='text', value='', placeholder='İsim')
+		label(for='surname') Soyisim: 
+			input(id='surname', name='surname', type='text', value='', placeholder='Soyisim')
+		label(for='email') E-Posta: 
+			input(id='email', name='email', type='text', value='', placeholder='E-posta adresi')
+		input(type='submit',value='Kaydet')
+
+	h1 Kayıtlar:
+	ul
+		- each user in users
+			- var str = user.name + ' ' + user.surname + ' (' + user.email + ')'
+			li= str
